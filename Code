@@ -1,0 +1,55 @@
+# lear
+# Pie
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+choice = int(input("\nEnter : "))
+
+
+# This one is with hole at the center and with edge
+if choice == 1:
+    quantity = [2.5, 2.5, 2.5, 2.5]
+    names = ["red", "blue", "green", "yellow"]
+    visual = ["red", "blue", "green", "yellow"]
+
+    plt.pie(quantity,
+    labels = names,
+    colors = visual,
+    wedgeprops = {"linewidth": 3.5, "edgecolor": "gray"})
+
+    # Hole
+    hole = plt.Circle((0, 0),
+    0.35,
+    color = "gray")
+
+    p = plt.gcf()
+    p.gca().add_artist(hole)
+
+    plt.title("Pie Data", fontsize = 24)
+
+
+elif choice == 2:
+    # This one is without hole
+    quantity = np.array([35, 25, 25, 15])
+    names = ["Apple", "Banana", "Orange", "Grapes"]
+    color = ["red", "yellow", "orange", "purple"]
+
+    plt.pie(quantity, labels = names, colors = color, startangle = 90, wedgeprops= {"linewidth": 2, "edgecolor": "gray"})
+
+
+elif choice == 3:
+    # This one is without hole, but with piece out (piece of quantity)
+    # There also is a parameter 'shadow' which one is like 'edge', so i don't recommend using 'wedgeprops' and 'shadow' at the one pie data
+    quantity = np.array([35, 25, 25, 15])
+    names = ["Apple", "Banana", "Orange", "Grapes"]
+    color = ["red", "yellow", "orange", "purple"]
+    my_explode = [0, 0.2, 0, 0]
+
+    plt.pie(quantity, labels = names, colors = color, startangle = 90, wedgeprops= {"linewidth": 2, "edgecolor": "gray"}, explode = my_explode, shadow = True)
+
+
+
+
+plt.show()
